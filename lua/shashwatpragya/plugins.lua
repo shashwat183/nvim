@@ -48,7 +48,9 @@ return require("packer").startup(function(use)
 	-- Plugin to add greeting dashboard when nvim without a file or folder -> https://github.com/goolord/alpha-nvim
 	use({ "goolord/alpha-nvim" })
 	use("folke/which-key.nvim") -- Which key plugin
-	use("karb94/neoscroll.nvim")
+	use("karb94/neoscroll.nvim") -- smooth scrolling
+	use({ "ellisonleao/glow.nvim" }) -- Markdown preview in neovim
+	use("norcalli/nvim-colorizer.lua") -- Colour Preview
 
 	-- Colorschemes
 	use({ "ellisonleao/gruvbox.nvim" })
