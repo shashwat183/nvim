@@ -3,8 +3,7 @@ if not status_ok then
 	return
 end
 
-local dashboard = require("alpha.themes.dashboard")
-dashboard.section.header.val = {
+neovim_text_header = {
 	[[                               __                ]],
 	[[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
 	[[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
@@ -12,6 +11,17 @@ dashboard.section.header.val = {
 	[[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
 	[[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
 }
+
+name_header = {
+	[[  ____  _               _                  _   ]],
+	[[ / ___|| |__   __ _ ___| |____      ____ _| |_ ]],
+	[[ \___ \| '_ \ / _` / __| '_ \ \ /\ / / _` | __|]],
+	[[  ___) | | | | (_| \__ \ | | \ V  V / (_| | |_ ]],
+	[[ |____/|_| |_|\__,_|___/_| |_|\_/\_/ \__,_|\__|]],
+}
+
+local dashboard = require("alpha.themes.dashboard")
+dashboard.section.header.val = neovim_text_header
 dashboard.section.buttons.val = {
 	dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
 	dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
@@ -23,7 +33,7 @@ dashboard.section.buttons.val = {
 }
 
 local function footer()
--- NOTE: requires the fortune-mod package to work
+	-- NOTE: requires the fortune-mod package to work
 	-- local handle = io.popen("fortune")
 	-- local fortune = handle:read("*a")
 	-- handle:close()
