@@ -4,13 +4,21 @@ local formatting = null_ls.builtins.formatting
 
 local diagnostics = null_ls.builtins.diagnostics
 
-local sources = {
-	formatting.stylua,
-	formatting.black.with({
-		extra_args = { "--line-length", "79", "--fast" },
-	}),
-	diagnostics.flake8,
-}
+local sources
+
+if pcall(require, 'shashwatpragya.lsp.local-null-ls-sources') then
+  -- Locally defined formatting sources and configurations
+  sources = require('shashwatpragya.lsp.local-null-ls-sources')
+else
+  -- Default formatting sources with configurations
+  sources = {
+    formatting.stylua,
+    formatting.black.with({
+      extra_args = { "--line-length", "79", "--fast" },
+    }),
+    diagnostics.flake8,
+  }
+end
 
 null_ls.setup({
 	sources = sources,
