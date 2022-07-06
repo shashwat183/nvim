@@ -1,14 +1,17 @@
+local local_ignore = {}
+if pcall(require, "shashwatpragya.treesitter-local-ignore") then
+  local_ignore = require("shashwatpragya.treesitter-local-ignore")
+end
+
 return require'nvim-treesitter.configs'.setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
   ensure_installed = "all",
-  ignore_install = { "phpdoc" },
+  -- List of parsers to ignore installing
+  ignore_install = vim.tbl_deep_extend("force", local_ignore, { "phpdoc" }),
   -- ensure_installed = "maintained",
 
   -- Install languages synchronously (only applied to `ensure_installed`)
   sync_install = false,
-
-  -- List of parsers to ignore installing
-  ignore_install = {},
 
   highlight = {
     -- `false` will disable the whole extension
