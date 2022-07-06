@@ -1,2 +1,3 @@
 plugin/packer_compiled.lua
 lua/shashwatpragya/lsp/local-null-ls-sources.lua
+ftplugin/python_local.lua
