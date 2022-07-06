@@ -1,2 +1,2 @@
 -- mandatory setup function
-return require('nvim-autopairs').setup{}
+return require("nvim-autopairs").setup({})

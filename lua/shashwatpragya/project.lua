@@ -1,1 +1,1 @@
-return require("project_nvim").setup {}
+return require("project_nvim").setup({})

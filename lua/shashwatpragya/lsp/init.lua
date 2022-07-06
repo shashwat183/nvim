@@ -1,6 +1,6 @@
 require("lspconfig")
 
-require "shashwatpragya.lsp.lsp-installer"
+require("shashwatpragya.lsp.lsp-installer")
 
 -- local nlspsettings = require("nlspsettings")
 -- nlspsettings.setup({

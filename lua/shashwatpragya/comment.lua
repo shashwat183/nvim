@@ -1,1 +1,1 @@
-return require('nvim_comment').setup()
+return require("nvim_comment").setup()
