@@ -43,7 +43,7 @@ require("nvim-tree").setup({
 		timeout = 500,
 	},
 	view = {
-		width = 30,
+		width = 40,
 		height = 30,
 		hide_root_folder = false,
 		side = "left",
@@ -52,8 +52,8 @@ require("nvim-tree").setup({
 			custom_only = false,
 			list = {},
 		},
-		number = false,
-		relativenumber = false,
+		number = true,
+		relativenumber = true,
 		signcolumn = "yes",
 	},
 	trash = {
@@ -66,7 +66,7 @@ require("nvim-tree").setup({
 			global = false,
 		},
 		open_file = {
-			quit_on_open = false,
+			quit_on_open = true,
 			resize_window = true,
 			window_picker = {
 				enable = true,
