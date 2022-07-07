@@ -103,5 +103,8 @@ return require("packer").startup(function(use)
 
   -- Outline
   use("simrat39/symbols-outline.nvim")
+
+  -- Github Copilot
+  use({ "github/copilot.vim", disable = true })
   -- require("packer").sync()
 end)
