@@ -6,4 +6,4 @@ vim.o.background = "dark" -- or "light" for light mode
 -- require('onedark').load()
 vim.g.vscode_style = "dark"
 vim.g.vscode_italic_comment = 1
-vim.cmd([[colorscheme vscode]])
+vim.cmd([[colorscheme darkplus]])
