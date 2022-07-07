@@ -3,7 +3,7 @@ if not status_ok then
 	return
 end
 
-neovim_text_header = {
+Neovim_text_header = {
 	[[                               __                ]],
 	[[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
 	[[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
@@ -12,7 +12,7 @@ neovim_text_header = {
 	[[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
 }
 
-name_header = {
+Name_header = {
 	[[  ____  _               _                  _   ]],
 	[[ / ___|| |__   __ _ ___| |____      ____ _| |_ ]],
 	[[ \___ \| '_ \ / _` / __| '_ \ \ /\ / / _` | __|]],
@@ -21,7 +21,7 @@ name_header = {
 }
 
 local dashboard = require("alpha.themes.dashboard")
-dashboard.section.header.val = neovim_text_header
+dashboard.section.header.val = Neovim_text_header
 dashboard.section.buttons.val = {
 	dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
 	dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
