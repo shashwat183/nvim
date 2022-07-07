@@ -18,6 +18,8 @@ else
 		}),
 		formatting.gofmt,
 		diagnostics.flake8,
+		diagnostics.golangci_lint,
+		diagnostics.gitlint,
 	}
 end
 
