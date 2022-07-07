@@ -40,7 +40,6 @@ return require("packer").startup(function(use)
 	})
 	use("akinsho/bufferline.nvim")
 	use({ "akinsho/toggleterm.nvim" })
-	use("ahmedkhalf/project.nvim")
 	-- Plugin for Speeding up loading lua modules -> https://github.com/lewis6991/impatient.nvim
 	use("lewis6991/impatient.nvim")
 	-- Plugin to add indentation lines on the screen(very cool stuff) -> https://github.com/lukas-reineke/indent-blankline.nvim
@@ -65,6 +64,7 @@ return require("packer").startup(function(use)
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+	use("nvim-telescope/telescope-project.nvim")
 
 	-- Treesitter
 	use({

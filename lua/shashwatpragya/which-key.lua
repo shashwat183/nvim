@@ -157,6 +157,7 @@ local mappings = {
 			"<cmd>Telescope diagnostics<cr>",
 			"Project Diagnostics",
 		},
+		p = { "<cmd>Telescope project<cr>", "Projects" },
 		T = { "<cmd>Telescope<cr>", "Telescope" },
 		h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
 		M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
