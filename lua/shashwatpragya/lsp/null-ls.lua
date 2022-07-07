@@ -16,6 +16,7 @@ else
 		formatting.black.with({
 			extra_args = { "--line-length", "79", "--fast" },
 		}),
+		formatting.gofmt,
 		diagnostics.flake8,
 	}
 end
