@@ -1,4 +1,5 @@
 plugin/packer_compiled.lua
 lua/shashwatpragya/lsp/local-null-ls-sources.lua
 ftplugin/python_local.lua
+ftplugin/java.lua
 lua/shashwatpragya/treesitter-local-ignore.lua
