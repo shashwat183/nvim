@@ -110,4 +110,10 @@ return require("packer").startup(function(use)
 
 	-- Debugger Plugin
 	use("mfussenegger/nvim-dap")
+
+	-- Rest Client
+	use({
+		"NTBBloodbath/rest.nvim",
+		requires = { "nvim-lua/plenary.nvim" },
+	})
 end)

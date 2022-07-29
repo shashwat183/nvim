@@ -181,6 +181,11 @@ local mappings = {
 		h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
 		v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
 	},
+	R = {
+		name = "Rest Client",
+		r = { "<cmd>lua require('rest-nvim').run()<CR>", "Run REST request on current line" },
+		l = { "<cmd>lua require('rest-nvim').last()<CR>", "Run last REST request" },
+	},
 }
 
 local wk = require("which-key")
