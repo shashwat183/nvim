@@ -25,5 +25,11 @@ return require("nvim-treesitter.configs").setup({
 		-- Using this option may slow down your editor, and you may see some duplicate highlights.
 		-- Instead of true it can also be a list of languages
 		additional_vim_regex_highlighting = false,
+
+		-- nvim-treesitter-pyfold config
+		pyfold = {
+			enable = true,
+			custom_foldtext = true, -- Sets provided foldtext on window where module is active
+		},
 	},
 })

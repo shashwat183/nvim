@@ -116,4 +116,7 @@ return require("packer").startup(function(use)
 		"NTBBloodbath/rest.nvim",
 		requires = { "nvim-lua/plenary.nvim" },
 	})
+
+	-- Correct Python Code Folding
+	use("eddiebergman/nvim-treesitter-pyfold")
 end)
