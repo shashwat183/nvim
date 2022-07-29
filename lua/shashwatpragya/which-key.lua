@@ -83,7 +83,7 @@ local mappings = {
 	},
 	["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
 	["o"] = { "<cmd>SymbolsOutline<cr>", "Outline" },
-	["w"] = { "<cmd>w!<CR>", "Save" },
+	-- ["w"] = { "<cmd>w!<CR>", "Save" },
 	["Q"] = { ":q<CR>", "Quit" },
 	["c"] = { "<cmd>bp | sp | bn | bd!<CR>", "Close Buffer" },
 	["f"] = {
