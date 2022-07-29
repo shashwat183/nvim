@@ -87,7 +87,7 @@ return require("packer").startup(function(use)
 	use("jose-elias-alvarez/null-ls.nvim")
 	-- snippets
 	use({ "L3MON4D3/LuaSnip", disable = false }) --snippet engine
-	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
+	use({ "rafamadriz/friendly-snippets", disable = true }) -- a bunch of snippets to use
 
 	-- LSP
 	use("neovim/nvim-lspconfig")
