@@ -122,6 +122,10 @@ local mappings = {
 			"Diff",
 		},
 	},
+	n = {
+		name = "Neovim",
+		c = { "<cmd>e ~/.config/nvim/<cr>", "Open Config Folder" },
+	},
 	l = {
 		name = "LSP",
 		a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
