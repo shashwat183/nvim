@@ -36,6 +36,11 @@ lsp_installer.on_server_ready(function(server)
 		opts = vim.tbl_deep_extend("force", gopls_opts, opts)
 	end
 
+	if server.name == "yamlls" then
+		local yamlls_opts = require("shashwatpragya.lsp.settings.yamlls")
+		opts = vim.tbl_deep_extend("force", yamlls_opts, opts)
+	end
+
 	-- This setup() function will take the provided server configuration and decorate it with the necessary properties
 	-- before passing it onwards to lspconfig.
 	-- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
