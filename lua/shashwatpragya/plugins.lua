@@ -107,4 +107,7 @@ return require("packer").startup(function(use)
 	-- Github Copilot
 	use({ "github/copilot.vim", disable = true })
 	-- require("packer").sync()
+
+	-- Debugger Plugin
+	use("mfussenegger/nvim-dap")
 end)
