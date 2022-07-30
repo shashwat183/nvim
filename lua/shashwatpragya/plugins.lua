@@ -119,4 +119,10 @@ return require("packer").startup(function(use)
 
 	-- Correct Python Code Folding
 	use("eddiebergman/nvim-treesitter-pyfold")
+
+	-- Navic, winbar/statusline plugin to show code context
+	use({
+		"SmiteshP/nvim-navic",
+		requires = "neovim/nvim-lspconfig",
+	})
 end)
