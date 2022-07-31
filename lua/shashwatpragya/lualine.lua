@@ -8,10 +8,11 @@ local navic = require("nvim-navic")
 
 -- Change the background of lualine_c section for normal mode
 -- custom_gruvbox.normal.c.bg = '#112233'
+custom_darkplus.normal.c.bg = "#112233"
 
 return require("lualine").setup({
 	options = {
-		theme = "vscode",
+		theme = "kanagawa",
 	},
 	sections = {
 		lualine_c = {
