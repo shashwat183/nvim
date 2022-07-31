@@ -144,4 +144,7 @@ return require("packer").startup(function(use)
 
 	-- Some UI Improvements
 	use({ "stevearc/dressing.nvim" })
+
+	-- View registers in dropdown
+	use("tversteeg/registers.nvim")
 end)
