@@ -131,4 +131,11 @@ return require("packer").startup(function(use)
 		"folke/todo-comments.nvim",
 		requires = "nvim-lua/plenary.nvim",
 	})
+
+	-- Nice view for showing diagnostics etc.
+	-- Alternative to quickfix and loclist windows
+	use({
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+	})
 end)
