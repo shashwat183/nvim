@@ -141,4 +141,7 @@ return require("packer").startup(function(use)
 
 	-- Cool side notifications for stuff
 	use("rcarriga/nvim-notify")
+
+	-- Some UI Improvements
+	use({ "stevearc/dressing.nvim" })
 end)
