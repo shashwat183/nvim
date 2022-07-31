@@ -151,4 +151,7 @@ return require("packer").startup(function(use)
 
 	-- As it says, git blame plugin
 	use("f-person/git-blame.nvim")
+
+	-- nice ui for when lsp is loading
+	use("j-hui/fidget.nvim")
 end)
