@@ -148,4 +148,7 @@ return require("packer").startup(function(use)
 
 	-- View registers in dropdown
 	use("tversteeg/registers.nvim")
+
+	-- As it says, git blame plugin
+	use("f-person/git-blame.nvim")
 end)

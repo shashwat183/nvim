@@ -116,6 +116,7 @@ local mappings = {
 		U = { "<cmd>lua require 'gitsigns'.reset_buffer_index()<cr>", "Unstage Buffer" },
 		o = { "<cmd>Telescope git_status<cr>", "View changed files(Telescope)" },
 		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+		B = { "<cmd>GitBlameToggle<cr>", "Toggle Inline Git Blame" },
 		c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
 		d = {
 			"<cmd>Gitsigns diffthis HEAD<cr>",
