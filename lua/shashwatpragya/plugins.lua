@@ -138,4 +138,7 @@ return require("packer").startup(function(use)
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
 	})
+
+	-- Cool side notifications for stuff
+	use("rcarriga/nvim-notify")
 end)
