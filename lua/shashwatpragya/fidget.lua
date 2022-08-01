@@ -1,7 +1,8 @@
+-- TODO: Doesn't work with nvim-jdtls yet, figure out how to make it work
 require("fidget").setup({
 	text = {
 		spinner = "pipe", -- animation shown when tasks are ongoing
-		done = "✔", -- character shown when all tasks are complete
+		done = "", -- character shown when all tasks are complete
 		commenced = "Started", -- message shown when task starts
 		completed = "Completed", -- message shown when task completes
 	},
@@ -10,9 +11,9 @@ require("fidget").setup({
 		right = true, -- align fidgets along right edge of buffer
 	},
 	timer = {
-		spinner_rate = 125, -- frame rate of spinner animation, in ms
+		spinner_rate = 1000, -- frame rate of spinner animation, in ms
 		fidget_decay = 2000, -- how long to keep around empty fidget, in ms
-		task_decay = 1000, -- how long to keep around completed task, in ms
+		task_decay = 3000, -- how long to keep around completed task, in ms
 	},
 	window = {
 		relative = "win", -- where to anchor, either "win" or "editor"
