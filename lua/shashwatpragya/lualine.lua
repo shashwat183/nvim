@@ -4,7 +4,7 @@ local custom_tokyonight = require("lualine.themes.tokyonight")
 local custom_darkplus = require("lualine.themes.darkplus")
 local custom_onedark = require("lualine.themes.onedark")
 local custom_kanagawa = require("lualine.themes.kanagawa")
-local custom_onedarker = require("lualine.themes.onedarker")
+-- local custom_onedarker = require("lualine.themes.onedarker")
 local navic = require("nvim-navic")
 
 -- Change the background of lualine_c section for normal mode
