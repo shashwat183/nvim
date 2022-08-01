@@ -128,6 +128,9 @@ M.on_attach = function(client, bufnr)
 	if client.name == "sumneko_lua" then
 		client.resolved_capabilities.document_formatting = false
 	end
+	if client.name == "jdt.ls" then
+		client.resolved_capabilities.document_formatting = false
+	end
 
 	lsp_keymaps(bufnr)
 	lsp_code_lens_refresh(client)

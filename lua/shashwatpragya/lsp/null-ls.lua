@@ -16,6 +16,7 @@ else
 		formatting.black.with({
 			extra_args = { "--line-length", "79", "--fast" },
 		}),
+		formatting.google_java_format,
 		formatting.eslint_d,
 		diagnostics.eslint_d,
 		formatting.gofmt,
