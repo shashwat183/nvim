@@ -132,10 +132,13 @@ M.on_attach = function(client, bufnr)
 		client.resolved_capabilities.document_formatting = false
 	end
 
+	if client.name ~= "groovyls" and client.name ~= "bashls" then
+		attach_navic(client, bufnr)
+	end
+
 	lsp_keymaps(bufnr)
 	lsp_code_lens_refresh(client)
 	lsp_highlight_document(client)
-	attach_navic(client, bufnr)
 end
 
 M.on_exit = function(_, _)
