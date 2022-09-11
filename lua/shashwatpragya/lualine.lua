@@ -13,7 +13,8 @@ custom_darkplus.normal.c.bg = "#112233"
 return require("lualine").setup({
 	options = {
 		icons_enabled = true,
-		theme = custom_darkplus,
+		-- theme = custom_darkplus,
+		theme = "catppuccin",
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		globalstatus = true,

@@ -61,6 +61,7 @@ return require("packer").startup(function(use)
 	use({ "rose-pine/neovim", as = "rose-pine", tag = "v1.*" })
 	use("Mofiqul/vscode.nvim")
 	use("kvrohit/substrata.nvim")
+	use({ "catppuccin/nvim", as = "catppuccin" })
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
