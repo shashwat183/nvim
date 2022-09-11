@@ -1,4 +1,5 @@
 local actions = require("telescope.actions")
+local action_layout = require("telescope.actions.layout")
 
 require("telescope").setup({
 	defaults = {
@@ -7,6 +8,12 @@ require("telescope").setup({
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "smart" },
+		sorting_strategy = "ascending",
+		layout_config = {
+			prompt_position = "top",
+			horizontal = { width = 0.9, height = 0.98, prompt_position = "top" },
+			vertical = {},
+		},
 
 		mappings = {
 			i = {
@@ -70,6 +77,7 @@ require("telescope").setup({
 				["<PageDown>"] = actions.results_scrolling_down,
 
 				["?"] = actions.which_key,
+				["p"] = action_layout.toggle_preview,
 			},
 		},
 	},
