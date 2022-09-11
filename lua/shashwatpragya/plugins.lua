@@ -63,6 +63,9 @@ return require("packer").startup(function(use)
 	use("kvrohit/substrata.nvim")
 	use({ "catppuccin/nvim", as = "catppuccin" })
 
+	-- Transparent background
+	use({ "xiyaowong/nvim-transparent" })
+
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
