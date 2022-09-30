@@ -78,6 +78,7 @@ return require("packer").startup(function(use)
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	})
+	use({ "nvim-treesitter/nvim-treesitter-context" })
 
 	-- Git
 	use({ "lewis6991/gitsigns.nvim" })
