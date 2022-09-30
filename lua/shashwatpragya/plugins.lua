@@ -62,7 +62,9 @@ return require("packer").startup(function(use)
 	use("Mofiqul/vscode.nvim")
 	use("kvrohit/substrata.nvim")
 	use({ "catppuccin/nvim", as = "catppuccin" })
-
+	use("lunarvim/horizon.nvim")
+	use({ "shaunsingh/oxocarbon.nvim", run = "./install.sh" })
+	use("EdenEast/nightfox.nvim")
 	-- Transparent background
 	use({ "xiyaowong/nvim-transparent" })
 
