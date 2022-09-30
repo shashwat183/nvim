@@ -87,7 +87,7 @@ local mappings = {
 	["Q"] = { ":q<CR>", "Quit" },
 	["c"] = { "<cmd>bp | sp | bn | bd!<CR>", "Close Buffer" },
 	["f"] = {
-		"<cmd>lua require('telescope.builtin').find_files({path_display={'absolute'}, layout='horizontal'})<cr>",
+		"<cmd>lua require('telescope.builtin').find_files({path_display={'absolute'}, layout='horizontal', hidden=true})<cr>",
 		-- "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{path_display={'absolute'}, layout='horizontal', layout_config={width=0.9, height=0.98, prompt_position='top'}})<cr>",
 		"Find files",
 	},
