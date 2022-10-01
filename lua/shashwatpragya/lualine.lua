@@ -14,7 +14,7 @@ return require("lualine").setup({
 	options = {
 		icons_enabled = true,
 		-- theme = custom_darkplus,
-		theme = "catppuccin",
+		theme = "carbonfox",
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		globalstatus = true,
