@@ -24,7 +24,7 @@ local function disable_code_lens_refresh()
 end
 
 local function lsp_code_lens_refresh(client)
-	if client.resolved_capabilities.code_lens then
+	if client.server_capabilities.code_lens then
 		enable_code_lens_refresh()
 	end
 end
@@ -84,7 +84,7 @@ end
 
 local function lsp_highlight_document(client)
 	-- Set autocommands conditional on server_capabilities
-	if client.resolved_capabilities.document_highlight then
+	if client.server_capabilities.document_highlight then
 		vim.api.nvim_exec(
 			[[
       augroup lsp_document_highlight
@@ -120,22 +120,21 @@ end
 
 M.on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.document_formatting = false
 	end
 	if client.name == "gopls" then
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.document_formatting = false
 	end
 	if client.name == "sumneko_lua" then
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.document_formatting = false
 	end
 	if client.name == "jdt.ls" then
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.document_formatting = false
 	end
 
 	if client.name ~= "groovyls" and client.name ~= "bashls" then
 		attach_navic(client, bufnr)
 	end
-
 	lsp_keymaps(bufnr)
 	lsp_code_lens_refresh(client)
 	lsp_highlight_document(client)
@@ -152,6 +151,6 @@ if not status_ok then
 	return
 end
 
-M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 return M

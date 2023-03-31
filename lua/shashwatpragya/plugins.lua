@@ -57,7 +57,7 @@ return require("packer").startup(function(use)
 	use("folke/tokyonight.nvim")
 	use("lunarvim/darkplus.nvim")
 	use("navarasu/onedark.nvim")
-	use("rebelot/kanagawa.nvim")
+	-- use("rebelot/kanagawa.nvim")
 	use({ "rose-pine/neovim", as = "rose-pine", tag = "v1.*" })
 	use("Mofiqul/vscode.nvim")
 	use("kvrohit/substrata.nvim")
@@ -99,7 +99,9 @@ return require("packer").startup(function(use)
 
 	-- LSP
 	use("neovim/nvim-lspconfig")
-	use("williamboman/nvim-lsp-installer")
+	-- use("williamboman/nvim-lsp-installer")
+	use("williamboman/mason.nvim")
+	use("williamboman/mason-lspconfig.nvim")
 	-- use "tamago324/nlsp-settings.nvim" -- language server settings defined in json
 	use("b0o/schemastore.nvim") -- Plugin provides largest collection of json schemas
 
