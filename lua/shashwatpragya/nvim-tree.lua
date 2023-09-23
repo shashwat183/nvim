@@ -3,9 +3,9 @@
 require("nvim-tree").setup({
 	disable_netrw = true,
 	hijack_netrw = true,
-	open_on_setup = false,
-	ignore_buffer_on_setup = false,
-	ignore_ft_on_setup = {},
+	-- open_on_setup = false,
+	-- ignore_buffer_on_setup = false,
+	-- ignore_ft_on_setup = {},
 	auto_reload_on_write = true,
 	open_on_tab = false,
 	hijack_cursor = false,
@@ -47,10 +47,10 @@ require("nvim-tree").setup({
 		hide_root_folder = false,
 		side = "left",
 		preserve_window_proportions = false,
-		mappings = {
-			custom_only = false,
-			list = {},
-		},
+		-- mappings = {
+		-- 	custom_only = false,
+		-- 	list = {},
+		-- },
 		number = true,
 		relativenumber = true,
 		signcolumn = "yes",

@@ -5,7 +5,7 @@ require("telescope").setup({
 	defaults = {
 		-- Default configuration for telescope goes here:
 		-- config_key = value,
-		file_ignore_patterns = { "node_modules", ".class", "build", "bin", ".git", "vendor", "target" },
+		file_ignore_patterns = { "node_modules", ".class", "build", "bin", ".git", "vendor", "target", "venv", "sam" },
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "smart" },

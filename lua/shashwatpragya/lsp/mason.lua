@@ -9,6 +9,10 @@ local servers = {
   "pyright",
   "yamlls",
   "gopls",
+  "asm_lsp",
+  "tsserver",
+  "html",
+  "cssls"
 }
 
 local settings = {
@@ -55,6 +59,16 @@ for _, server in pairs(servers) do
 	if server == "pyright" then
 		local pyright_opts = require("shashwatpragya.lsp.settings.pyright")
 		opts = vim.tbl_deep_extend("force", pyright_opts, opts)
+	end
+
+	if server == "html" then
+		local html_opts = require("shashwatpragya.lsp.settings.html")
+		opts = vim.tbl_deep_extend("force", html_opts, opts)
+	end
+
+	if server == "cssls" then
+		local cssls_opts = require("shashwatpragya.lsp.settings.cssls")
+		opts = vim.tbl_deep_extend("force", cssls_opts, opts)
 	end
 
 	if server == "gopls" then

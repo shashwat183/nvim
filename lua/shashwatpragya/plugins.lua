@@ -21,8 +21,8 @@ return require("packer").startup(function(use)
 
 	-- Useful lua functions used ny lots of plugins -> https://github.com/nvim-lua/plenary.nvim
 	use("nvim-lua/plenary.nvim")
-	-- Autopairs(automatically create pairs), integrates with both cmp and treesitter -> https://github.com/windwp/nvim-autopairs
-	use("windwp/nvim-autopairs")
+	-- -- Autopairs(automatically create pairs), integrates with both cmp and treesitter -> https://github.com/windwp/nvim-autopairs
+	-- use("windwp/nvim-autopairs")
 	-- Plugin for code commenting -> https://github.com/terrortylor/nvim-comment
 	use("terrortylor/nvim-comment")
 	-- Plugin for devicons -> https://github.com/kyazdani42/nvim-web-devicons
