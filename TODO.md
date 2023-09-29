@@ -1,7 +1,7 @@
 # TODO
 
 - [] Fix issue - rest.nvim http treesitter syntax highlighting
-- [] Checkout nvim-treesitter-textobjects(it is setup in kickstart config so use that to understand better)
+- [] Maybe use move options in treesitter textobjects
 
 # Done
 
@@ -20,3 +20,4 @@
 - [x] More lsp config stuff to be pulled out of old config
 - [x] Typescript lsp setup
 - [x] Git plugins - vimfugitive(its amazing) -> checkout this video - https://www.youtube.com/watch?v=uUrKrYCAl1Y, vim-rhubarb
+- [x] Checkout nvim-treesitter-textobjects(it is setup in kickstart config so use that to understand better)
