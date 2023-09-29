@@ -1,166 +1,161 @@
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
--- Have packer use a popup window
-require("packer").init({
-	display = {
-		open_fn = function()
-			return require("packer.util").float({ border = "rounded" })
-		end,
-	},
-})
+require("lazy").setup({
+  -- telescope fuzzy finder (files, lsp, etc)
+  {
+    "nvim-telescope/telescope.nvim",
+    branch = "0.1.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+        cond = function()
+          return vim.fn.executable "make" == 1
+        end,
+      },
+    },
+  },
+  -- nightfox theme, I like the carbonfox dark theme from this plugin
+  {
+    "EdenEast/nightfox.nvim",
+    priority = 1000,
+  },
+  -- lualine for statusline
+  { "nvim-lualine/lualine.nvim" },
+  -- treesitter for advanced syntax highlighting
+  {
+    "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-textobjects",
+    },
+    build = ":TSUpdate",
+  },
+  -- transparent background
+  {
+    "xiyaowong/nvim-transparent",
+    config = function()
+      vim.cmd("TransparentEnable")
+    end,
+  },
+  -- restclient I like using it for making http calls
+  {
+    "rest-nvim/rest.nvim",
+    tag = "0.2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+  -- nvim tree - a better filetree
+  {
+    "nvim-tree/nvim-tree.lua",
+  },
+  -- nice icons
+  {
+    "nvim-tree/nvim-web-devicons",
+  },
+  -- smoooothhh scrolling
+  {
+    "karb94/neoscroll.nvim",
+  },
+  -- preview markdown files using glow cmd
+  {
+    "ellisonleao/glow.nvim",
+    config = true,
+    cmd = "Glow",
+  },
+  --  indentation guides with colored context etc
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    tag = "v2.20.8",
+  },
+  -- fancy todo highlights and commands
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+  -- ui improvements for things like rename, select etc
+  {
+    "stevearc/dressing.nvim",
+  },
+  -- nicer view for diagnostics, references etc
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
+  -- "gc" to comment visual regions/lines
+  { "numToStr/Comment.nvim",    opts = {} },
+  -- automatic closing braces and quotes
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+  },
+  -- harpoon for switching quickly between files
+  {
+    "ThePrimeagen/harpoon",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+  -- which key
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+  },
+  -- schema store schemas for jsonls and yamlls
+  { "b0o/schemastore.nvim" },
 
-return require("packer").startup(function(use)
-	-- Packer can manage itself
-	use({ "wbthomason/packer.nvim" })
+  -- git related plugins
+  { "lewis6991/gitsigns.nvim" },
+  -- tpope's git plugin, minimal use most
+    -- features are provided by gitsigns
+  { "tpope/vim-fugitive" },
+  -- enable fugitive GBrowse for github urls
+  { "tpope/vim-rhubarb" },
+  -- enable fugitive GBrowse for bitbucker urls
+  { "tommcdo/vim-fubitive" },
 
-	-- Useful lua functions used ny lots of plugins -> https://github.com/nvim-lua/plenary.nvim
-	use("nvim-lua/plenary.nvim")
-	-- -- Autopairs(automatically create pairs), integrates with both cmp and treesitter -> https://github.com/windwp/nvim-autopairs
-	-- use("windwp/nvim-autopairs")
-	-- Plugin for code commenting -> https://github.com/terrortylor/nvim-comment
-	use("terrortylor/nvim-comment")
-	-- Plugin for devicons -> https://github.com/kyazdani42/nvim-web-devicons
-	use("kyazdani42/nvim-web-devicons")
-	-- Plugin for tree based explorer -> https://github.com/kyazdani42/nvim-tree.lua
-	use({
-		"kyazdani42/nvim-tree.lua",
-		requires = {
-			"kyazdani42/nvim-web-devicons", -- optional, for file icon
-		},
-	})
-	use({
-		"nvim-lualine/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-	})
-	use({ "akinsho/bufferline.nvim", disable = false })
-	use({ "akinsho/toggleterm.nvim", disable = false })
-	-- Plugin for Speeding up loading lua modules -> https://github.com/lewis6991/impatient.nvim
-	use("lewis6991/impatient.nvim")
-	-- Plugin to add indentation lines on the screen(very cool stuff) -> https://github.com/lukas-reineke/indent-blankline.nvim
-	use("lukas-reineke/indent-blankline.nvim")
-	-- Plugin to add greeting dashboard when nvim without a file or folder -> https://github.com/goolord/alpha-nvim
-	use({ "goolord/alpha-nvim" })
-	use("folke/which-key.nvim") -- Which key plugin
-	use("karb94/neoscroll.nvim") -- smooth scrolling
-	use({ "ellisonleao/glow.nvim" }) -- Markdown preview in neovim
-	use("norcalli/nvim-colorizer.lua") -- Colour Preview
+  -- lsp related plugins
+  {
+    -- lsp configs and plugins
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      -- automatically install lsps to stdpath for neovim
+      { "williamboman/mason.nvim", config = true },
+      "williamboman/mason-lspconfig.nvim",
+      -- useful status updates for lsp
+      { "j-hui/fidget.nvim",       tag = "legacy" },
+      -- additional lua configuration, makes nvim stuff amazing!
+      "folke/neodev.nvim",
+    },
+  },
 
-	-- Colorschemes
-	use({ "ellisonleao/gruvbox.nvim" })
-	use("Mofiqul/dracula.nvim")
-	use("folke/tokyonight.nvim")
-	use("lunarvim/darkplus.nvim")
-	use("navarasu/onedark.nvim")
-	-- use("rebelot/kanagawa.nvim")
-	use({ "rose-pine/neovim", as = "rose-pine", tag = "v1.*" })
-	use("Mofiqul/vscode.nvim")
-	use("kvrohit/substrata.nvim")
-	use({ "catppuccin/nvim", as = "catppuccin" })
-	use("lunarvim/horizon.nvim")
-	use({ "shaunsingh/oxocarbon.nvim", run = "./install.sh" })
-	use("EdenEast/nightfox.nvim")
-	-- Transparent background
-	use({ "xiyaowong/nvim-transparent" })
-
-	-- Telescope
-	use("nvim-telescope/telescope.nvim")
-	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-	use("nvim-telescope/telescope-project.nvim")
-
-	-- Treesitter
-	use({
-		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
-	})
-	use({ "nvim-treesitter/nvim-treesitter-context" })
-
-	-- Git
-	use({ "lewis6991/gitsigns.nvim" })
-	use("kdheepak/lazygit.nvim")
-
-	-- cmp plugins
-	use("hrsh7th/nvim-cmp") -- The completion plugin
-	use("hrsh7th/cmp-buffer") -- buffer completions
-	use("hrsh7th/cmp-path") -- path completions
-	use("hrsh7th/cmp-cmdline") -- cmdline completions
-	use("saadparwaiz1/cmp_luasnip") -- snippet completions
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-nvim-lua")
-	use("jose-elias-alvarez/null-ls.nvim")
-	-- snippets
-	use({ "L3MON4D3/LuaSnip", disable = false }) --snippet engine
-	use({ "rafamadriz/friendly-snippets", disable = true }) -- a bunch of snippets to use
-
-	-- LSP
-	use("neovim/nvim-lspconfig")
-	-- use("williamboman/nvim-lsp-installer")
-	use("williamboman/mason.nvim")
-	use("williamboman/mason-lspconfig.nvim")
-	-- use "tamago324/nlsp-settings.nvim" -- language server settings defined in json
-	use("b0o/schemastore.nvim") -- Plugin provides largest collection of json schemas
-
-	-- nvim jdtls
-	use("mfussenegger/nvim-jdtls")
-
-	-- Coc.nvim for Java
-	-- use {'neoclide/coc.nvim', branch = 'release'}
-
-	-- Outline
-	use("simrat39/symbols-outline.nvim")
-
-	-- Github Copilot
-	use({ "github/copilot.vim", disable = true })
-	-- require("packer").sync()
-
-	-- Debugger Plugin
-	use("mfussenegger/nvim-dap")
-
-	-- Rest Client
-	use({
-		"NTBBloodbath/rest.nvim",
-		requires = { "nvim-lua/plenary.nvim" },
-	})
-
-	-- Correct Python Code Folding
-	use("eddiebergman/nvim-treesitter-pyfold")
-
-	-- Navic, winbar/statusline plugin to show code context
-	use({
-		"SmiteshP/nvim-navic",
-		requires = "neovim/nvim-lspconfig",
-	})
-
-	-- Better way to do TODO Comments
-	use({
-		"folke/todo-comments.nvim",
-		requires = "nvim-lua/plenary.nvim",
-	})
-
-	-- Nice view for showing diagnostics etc.
-	-- Alternative to quickfix and loclist windows
-	use({
-		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
-	})
-
-	-- Cool side notifications for stuff
-	use("rcarriga/nvim-notify")
-
-	-- Some UI Improvements
-	use({ "stevearc/dressing.nvim" })
-
-	-- View registers in dropdown
-	use("tversteeg/registers.nvim")
-
-	-- As it says, git blame plugin
-	use("f-person/git-blame.nvim")
-
-	-- nice ui for when lsp is loading
-	use("j-hui/fidget.nvim")
-end)
+  -- Autocompletion
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      -- Snippet Engine & its associated nvim-cmp source
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
+      -- Adds LSP completion capabilities
+      "hrsh7th/cmp-nvim-lsp",
+      -- Adds a number of user-friendly snippets
+      "rafamadriz/friendly-snippets",
+      -- buffer completions
+      "hrsh7th/cmp-buffer",
+      -- path completions
+      "hrsh7th/cmp-path",
+    },
+  },
+}, {})

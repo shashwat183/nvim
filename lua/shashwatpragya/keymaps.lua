@@ -1,82 +1,109 @@
-local opts = { noremap = true, silent = true }
+-- basic keymaps
+-- what is noremap? - https://stackoverflow.com/questions/3776117/what-is-the-difference-between-the-remap-noremap-nnoremap-and-vnoremap-mapping
 
--- local term_opts = { silent = true }
+-- noremap just to be safe and not end up with recursive mappings
+-- silent so no messages are shown.
+local function options(desc)
+  local o = { noremap = true, silent = true }
+  if (desc == nil) then
+    return o
+  end
+  local p = { noremap = true, silent = true , desc = desc}
+  return p
+end
 
--- Shorten function name
-local keymap = vim.api.nvim_set_keymap
-
---Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
+-- jj for Escape
+vim.keymap.set("i", "jj", "<ESC>", options("jj for Escape"))
+-- <Space> for leader
+vim.keymap.set("", "<Space>", "<Nop>", options("leader"))
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
+-- git related keymaps
+vim.keymap.set('n', '<leader>gj', require('gitsigns').next_hunk, options("[G]it next hunk"))
+vim.keymap.set('n', '<leader>gk', require('gitsigns').prev_hunk, options("[G]it prev hunk"))
+vim.keymap.set('n', '<leader>gl', require('gitsigns').toggle_current_line_blame, options("[G]it toggle blame line"))
+vim.keymap.set('n', '<leader>gp', require('gitsigns').preview_hunk, options("[G]it preview hunk"))
+vim.keymap.set('n', '<leader>gr', require('gitsigns').reset_hunk, options("[G]it reset hunk"))
+vim.keymap.set('n', '<leader>gR', require('gitsigns').reset_buffer, options("[G]it reset buffer"))
+vim.keymap.set('n', '<leader>gs', require('gitsigns').stage_hunk, options("[G]it stage hunk"))
+vim.keymap.set('n', '<leader>gu', require('gitsigns').undo_stage_hunk, options("[G]it undo stage hunk"))
+vim.keymap.set('n', '<leader>gS', require('gitsigns').stage_buffer, options("[G]it stage buffer"))
+vim.keymap.set('n', '<leader>gU', require('gitsigns').reset_buffer_index, options("[G]it unstage buffer"))
+vim.keymap.set('n', '<leader>gd', function() vim.cmd("Gvdiffsplit HEAD") end, options("[G]it unstage buffer"))
+vim.keymap.set('n', '<leader>gh', function() require('gitsigns').toggle_linehl() require('gitsigns').toggle_numhl() end, options("[G]it toggle line highlight"))
 
--- Normal --
--- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+-- restclient keymaps
+vim.keymap.set('n', '<leader>rr', require('rest-nvim').run, options("[R]estclient run"))
 
--- Resize with arrows
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+-- telescope keymaps
+vim.keymap.set('n', '<leader>f', function() require('telescope.builtin').find_files({ path_display={'absolute'}, layout='horizontal', hidden=true, no_ignore=true }) end, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>b', function() require('telescope.builtin').buffers({ path_display={'absolute'}, layout='horizontal', hidden=true, no_ignore=true }) end, { desc = '[S]earch [Buffers]' })
+vim.keymap.set('n', '<leader>F', function() require('telescope.builtin').live_grep(require('telescope.themes').get_ivy({})) end, { desc = '[S]earch by [G]rep' })
 
--- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+-- harpoon keymaps
+vim.keymap.set('n', '<leader>hm', require('harpoon.mark').add_file, options("[H]arpoon mark current file"))
+vim.keymap.set('n', '<leader>hq', require('harpoon.ui').toggle_quick_menu, options("[H]arpoon toggle quick menu"))
+vim.keymap.set('n', '<leader>hp', require('harpoon.ui').nav_prev, options("[H]arpoon prev"))
+vim.keymap.set('n', '<leader>hn', require('harpoon.ui').nav_next, options("[H]arpoon next"))
 
--- Move text up and down
-keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
-keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
+-- diagnostics keymaps
+vim.keymap.set("n", "gl", vim.diagnostic.open_float, options("[D]iagnostics show"))
+vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev({ border = "rounded" }) end, options("[D]iagnostics goto prev"))
+vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next({ border = "rounded" }) end, options("[D]iagnostics goto next"))
+vim.keymap.set("n", "<leader>q", function() vim.cmd("Trouble document_diagnostics") end, options("[D]iagnostics document show"))
 
--- Insert --
--- Press jk fast to enter
-keymap("i", "jk", "<ESC>", opts)
-keymap("i", "jj", "<ESC>", opts)
+-- nvim tree keymaps
+vim.keymap.set("n", "<leader>e", function() vim.cmd('NvimTreeToggle') end, options("[N]vimTree toggle"))
 
--- Visual --
+-- buffer related keymaps
+vim.keymap.set("n", "<leader>c", function() vim.cmd('bp | sp | bn | bd!') end, options("[B]uffer close"))
+
+-- markdown preview using glow
+vim.keymap.set('n', '<leader>mp', ':Glow<CR>', options("[M]arkdown preview"))
+
+vim.keymap.set('n', '<leader>x', ':FidgetClose<CR>', options("[F]idget close"))
+
 -- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
-
--- Move text up and down
-keymap("v", "<A-j>", ":m .+1<CR>==", opts)
-keymap("v", "<A-k>", ":m .-2<CR>==", opts)
-keymap("v", "p", '"_dP', opts)
+vim.keymap.set("v", "<", "<gv", options())
+vim.keymap.set("v", ">", ">gv", options())
 
 -- Visual Block --
 -- Move text up and down
-keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+vim.keymap.set("x", "J", ":move '>+1<CR>gv-gv", options())
+vim.keymap.set("x", "K", ":move '<-2<CR>gv-gv", options())
+vim.keymap.set("x", "<A-j>", ":move '>+1<CR>gv-gv", options())
+vim.keymap.set("x", "<A-k>", ":move '<-2<CR>gv-gv", options())
 
 -- HARD MODE --
-keymap("n", "<Left>", "<Nop>", opts)
-keymap("n", "<Right>", "<Nop>", opts)
-keymap("n", "<Up>", "<Nop>", opts)
-keymap("n", "<Down>", "<Nop>", opts)
-keymap("n", "<PageUp>", "<Nop>", opts)
-keymap("n", "<Pagedown>", "<nop>", opts)
-keymap("i", "<Left>", "<Nop>", opts)
-keymap("i", "<Right>", "<Nop>", opts)
-keymap("i", "<Up>", "<Nop>", opts)
-keymap("i", "<Down>", "<Nop>", opts)
-keymap("i", "<PageUp>", "<Nop>", opts)
-keymap("i", "<Pagedown>", "<nop>", opts)
-keymap("v", "<Left>", "<Nop>", opts)
-keymap("v", "<Right>", "<Nop>", opts)
-keymap("v", "<Up>", "<Nop>", opts)
-keymap("v", "<Down>", "<Nop>", opts)
-keymap("v", "<PageUp>", "<Nop>", opts)
-keymap("v", "<Pagedown>", "<nop>", opts)
+vim.keymap.set("n", "<Left>", "<Nop>", options())
+vim.keymap.set("n", "<Right>", "<Nop>", options())
+vim.keymap.set("n", "<Up>", "<Nop>", options())
+vim.keymap.set("n", "<Down>", "<Nop>", options())
+vim.keymap.set("n", "<PageUp>", "<Nop>", options())
+vim.keymap.set("n", "<Pagedown>", "<nop>", options())
+vim.keymap.set("i", "<Left>", "<Nop>", options())
+vim.keymap.set("i", "<Right>", "<Nop>", options())
+vim.keymap.set("i", "<Up>", "<Nop>", options())
+vim.keymap.set("i", "<Down>", "<Nop>", options())
+vim.keymap.set("i", "<PageUp>", "<Nop>", options())
+vim.keymap.set("i", "<Pagedown>", "<nop>", options())
+vim.keymap.set("v", "<Left>", "<Nop>", options())
+vim.keymap.set("v", "<Right>", "<Nop>", options())
+vim.keymap.set("v", "<Up>", "<Nop>", options())
+vim.keymap.set("v", "<Down>", "<Nop>", options())
+vim.keymap.set("v", "<PageUp>", "<Nop>", options())
+vim.keymap.set("v", "<Pagedown>", "<nop>", options())
+
+
+-- [[ Highlight on yank ]]
+-- See `:help vim.highlight.on_yank()`
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
+})
+
