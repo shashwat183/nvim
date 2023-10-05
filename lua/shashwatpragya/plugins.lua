@@ -41,7 +41,7 @@ require("lazy").setup({
   },
   -- transparent background
   {
-    "xiyaowong/nvim-transparent",
+    "xiyaowong/transparent.nvim",
     config = function()
       vim.cmd("TransparentEnable")
     end,

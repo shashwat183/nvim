@@ -1,5 +1,6 @@
 require('shashwatpragya.plugins')
 require('shashwatpragya.colorscheme')
+require('shashwatpragya.transparent')
 require('shashwatpragya.options')
 require('shashwatpragya.lualine')
 require('shashwatpragya.treesitter')
