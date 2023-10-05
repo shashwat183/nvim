@@ -20,12 +20,30 @@ require("nvim-treesitter.configs").setup({
         ["ic"] = { query = "@class.inner", desc = "Select inside class" },
         ["ac"] = { query = "@class.outer", desc = "Select around class" },
         ["a/"] = { query = "@comment.outer", desc = "Select around comment" },
-        ["ir"] = { query = "@parameter.inner", desc = "Select inside parameter" },
+        ["ia"] = { query = "@parameter.inner", desc = "Select inside parameter" },
         ["iq"] = { query = "@conditional.inner", desc = "Select inside conitional statement" },
         ["aq"] = { query = "@conditional.outer", desc = "Select around conditional statement" },
         ["il"] = { query = "@loop.inner", desc = "Select inside loop" },
         ["al"] = { query = "@loop.outer", desc = "Select aroud loop" },
       },
+    },
+    move = {
+      enable = true,
+      set_jumps = true,
+      goto_next_start = {
+        ["<leader>nf"] = "@function.outer",
+        ["<leader>nc"] = "@class.outer",
+        ["<leader>na"] = "@parameter.outer",
+        ["<leader>nq"] = "@conditional.outer",
+        ["<leader>nl"] = "@loop.outer",
+      },
+      goto_previous_start = {
+        ["<leader>pf"] = "@function.outer",
+        ["<leader>pc"] = "@class.outer",
+        ["<leader>pa"] = "@parameter.outer",
+        ["<leader>pq"] = "@conditional.outer",
+        ["<leader>pl"] = "@loop.outer",
+      }
     },
   },
 })
