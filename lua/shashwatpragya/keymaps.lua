@@ -33,6 +33,9 @@ vim.keymap.set('n', '<leader>gU', require('gitsigns').reset_buffer_index, option
 vim.keymap.set('n', '<leader>gd', function() vim.cmd("Gvdiffsplit HEAD") end, options("[G]it unstage buffer"))
 vim.keymap.set('n', '<leader>gh', function() require('gitsigns').toggle_linehl() require('gitsigns').toggle_numhl() end, options("[G]it toggle line highlight"))
 
+-- aerial code outline keymaps
+vim.keymap.set('n', '<leader>a', '<cmd>AerialToggle<CR>', { desc = '[A]erial [T]oggle'})
+
 -- restclient keymaps
 vim.keymap.set('n', '<leader>rr', require('rest-nvim').run, options("[R]estclient run"))
 

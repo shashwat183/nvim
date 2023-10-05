@@ -28,10 +28,7 @@ require("lazy").setup({
     },
   },
   -- nightfox theme, I like the carbonfox dark theme from this plugin
-  {
-    "EdenEast/nightfox.nvim",
-    priority = 1000,
-  },
+  { "EdenEast/nightfox.nvim",   priority = 1000 },
   -- lualine for statusline
   { "nvim-lualine/lualine.nvim" },
   -- treesitter for advanced syntax highlighting
@@ -53,57 +50,31 @@ require("lazy").setup({
   {
     "rest-nvim/rest.nvim",
     tag = "0.2",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = {
+      "nvim-lua/plenary.nvim" }
   },
   -- nvim tree - a better filetree
-  {
-    "nvim-tree/nvim-tree.lua",
-  },
+  { "nvim-tree/nvim-tree.lua" },
   -- nice icons
-  {
-    "nvim-tree/nvim-web-devicons",
-  },
+  { "nvim-tree/nvim-web-devicons" },
   -- smoooothhh scrolling
-  {
-    "karb94/neoscroll.nvim",
-  },
+  { "karb94/neoscroll.nvim" },
   -- preview markdown files using glow cmd
-  {
-    "ellisonleao/glow.nvim",
-    config = true,
-    cmd = "Glow",
-  },
+  { "ellisonleao/glow.nvim",               config = true,                                   cmd = "Glow" },
   --  indentation guides with colored context etc
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    tag = "v2.20.8",
-  },
+  { "lukas-reineke/indent-blankline.nvim", tag = "v2.20.8" },
   -- fancy todo highlights and commands
-  {
-    "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
+  { "folke/todo-comments.nvim",            dependencies = { "nvim-lua/plenary.nvim" } },
   -- ui improvements for things like rename, select etc
-  {
-    "stevearc/dressing.nvim",
-  },
+  { "stevearc/dressing.nvim" },
   -- nicer view for diagnostics, references etc
-  {
-    "folke/trouble.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-  },
+  { "folke/trouble.nvim",                  dependencies = { "nvim-tree/nvim-web-devicons" } },
   -- "gc" to comment visual regions/lines
-  { "numToStr/Comment.nvim",    opts = {} },
+  { "numToStr/Comment.nvim",               opts = {} },
   -- automatic closing braces and quotes
-  {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-  },
+  { "windwp/nvim-autopairs",               event = "InsertEnter" },
   -- harpoon for switching quickly between files
-  {
-    "ThePrimeagen/harpoon",
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
+  { "ThePrimeagen/harpoon",                dependencies = { "nvim-lua/plenary.nvim" } },
   -- which key
   {
     "folke/which-key.nvim",
@@ -119,12 +90,22 @@ require("lazy").setup({
   -- git related plugins
   { "lewis6991/gitsigns.nvim" },
   -- tpope's git plugin, minimal use most
-    -- features are provided by gitsigns
+  -- features are provided by gitsigns
   { "tpope/vim-fugitive" },
   -- enable fugitive GBrowse for github urls
   { "tpope/vim-rhubarb" },
   -- enable fugitive GBrowse for bitbucker urls
   { "tommcdo/vim-fubitive" },
+  -- nice code outline
+  {
+    'stevearc/aerial.nvim',
+    opts = {},
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons"
+    },
+  },
+
 
   -- lsp related plugins
   {
