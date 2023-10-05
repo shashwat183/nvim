@@ -28,6 +28,7 @@ require("lualine").setup({
           newfile = '[New]',
         }
       },
+      "aerial",
     },
   },
 })
