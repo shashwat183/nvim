@@ -105,6 +105,8 @@ require("lazy").setup({
       "nvim-tree/nvim-web-devicons"
     },
   },
+  -- tokyonight colorscheme
+  { "folke/tokyonight.nvim" },
 
 
   -- lsp related plugins
@@ -139,4 +141,8 @@ require("lazy").setup({
       "hrsh7th/cmp-path",
     },
   },
-}, {})
+}, {
+  install = {
+    missing = false, -- don't just install a new plugin at startup
+  },
+})
