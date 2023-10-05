@@ -50,12 +50,6 @@ vim.keymap.set('n', '<leader>hq', require('harpoon.ui').toggle_quick_menu, optio
 vim.keymap.set('n', '<leader>hp', require('harpoon.ui').nav_prev, options("[H]arpoon prev"))
 vim.keymap.set('n', '<leader>hn', require('harpoon.ui').nav_next, options("[H]arpoon next"))
 
--- diagnostics keymaps
-vim.keymap.set("n", "gl", vim.diagnostic.open_float, options("[D]iagnostics show"))
-vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev({ border = "rounded" }) end, options("[D]iagnostics goto prev"))
-vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next({ border = "rounded" }) end, options("[D]iagnostics goto next"))
-vim.keymap.set("n", "<leader>q", function() vim.cmd("Trouble document_diagnostics") end, options("[D]iagnostics document show"))
-
 -- nvim tree keymaps
 vim.keymap.set("n", "<leader>e", function() vim.cmd('NvimTreeToggle') end, options("[N]vimTree toggle"))
 

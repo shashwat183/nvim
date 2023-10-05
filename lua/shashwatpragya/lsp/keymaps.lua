@@ -20,6 +20,12 @@ M.lsp_keymaps = function(bufnr)
   nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
   nmap('<leader>li', function() vim.lsp.inlay_hint(0, nil) end, '[I]nlay [H]nts toggle')
   nmap('<leader>lc', function() vim.lsp.codelens.refresh() end, '[C]ode [L]ens refresh')
+  nmap('<leader>li', function() vim.lsp.inlay_hint(0, nil) end, '[I]nlay [H]nts toggle')
+  nmap('<leader>lc', function() vim.lsp.codelens.refresh() end, '[C]ode [L]ens refresh')
+  nmap('<leader>lj', function() vim.diagnostic.goto_next({ float = false }) end, '[D]iagnostics [G]oto [N]ext')
+  nmap('<leader>lp', function() vim.diagnostic.goto_prev({ float = false }) end, '[D]iagnostics [G]oto [P]rev')
+  nmap("<leader>lD", function() vim.cmd("Trouble document_diagnostics") end, '[D]iagnostics [D]ocument [S]how')
+  nmap("gl", vim.diagnostic.open_float, '[D]iagnostics show')
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')

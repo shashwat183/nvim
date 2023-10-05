@@ -20,7 +20,7 @@ vim.opt["splitright"] = true -- force all vertical splits to go to the right of 
 vim.opt["number"] = true -- set linenumbers
 vim.opt["relativenumber"] = true -- set relativelinenumber
 vim.opt["numberwidth"] = 2 -- number column width
-vim.opt["signcolumn"] = "auto" -- always show sign column
+vim.opt["signcolumn"] = "auto:5" -- always show sign column
 
 -- visual mode options
 vim.cmd([[highlight Visual guibg=#4e4e4e]]) -- highlight group for visual mode selection
