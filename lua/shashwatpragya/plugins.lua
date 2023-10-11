@@ -123,6 +123,8 @@ require("lazy").setup({
       "folke/neodev.nvim",
     },
   },
+  -- formatter provider
+  { 'stevearc/conform.nvim' },
 
   -- Autocompletion
   {
