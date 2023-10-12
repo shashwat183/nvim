@@ -5,7 +5,8 @@ require("nvim-treesitter.configs").setup({
     "gomod", "gosum", "java",
     "groovy", "xml", "http",
     "css", "json", "javascript",
-    "typescript", "bash", "http", "hcl"
+    "typescript", "bash", "http", "hcl",
+    "make"
   },
   highlight = {
     enable = true,
