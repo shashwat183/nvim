@@ -125,6 +125,14 @@ require("lazy").setup({
   },
   -- formatter provider
   { 'stevearc/conform.nvim' },
+  -- installs useful tools for go development
+  {
+    "olexsmir/gopher.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-lua/plenary.nvim"
+    }
+  },
 
   -- Autocompletion
   {
