@@ -45,3 +45,10 @@ vim.opt["laststatus"] = 3 -- single statusline for entire editor
 vim.opt["guifont"] = "JetBrainsMono Nerd Font Mono:h16" -- the font used in graphical neovim applications
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
+
+-- add templ filetype
+vim.filetype.add({
+    extension = {
+        templ = "templ",
+    },
+})

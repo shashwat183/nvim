@@ -123,6 +123,8 @@ require("lazy").setup({
       "folke/neodev.nvim",
     },
   },
+  -- nvim-jdtls custom plugin to setup jdtls for java
+  { 'mfussenegger/nvim-jdtls' },
   -- formatter provider
   { 'stevearc/conform.nvim' },
   -- installs useful tools for go development
