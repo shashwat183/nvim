@@ -96,15 +96,6 @@ require("lazy").setup({
   { "tpope/vim-rhubarb" },
   -- enable fugitive GBrowse for bitbucker urls
   { "tommcdo/vim-fubitive" },
-  -- nice code outline
-  {
-    'stevearc/aerial.nvim',
-    opts = {},
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons"
-    },
-  },
   -- tokyonight colorscheme
   { "folke/tokyonight.nvim" },
 
