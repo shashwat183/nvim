@@ -118,6 +118,13 @@ require("lazy").setup({
   { 'mfussenegger/nvim-jdtls' },
   -- formatter provider
   { 'stevearc/conform.nvim' },
+  -- install formatters configured in conform using mason
+  { 'zapling/mason-conform.nvim' },
+  -- linting provider
+  { 'mfussenegger/nvim-lint' },
+  -- install linters configured in nvim-lint using mason
+  { 'rshkarin/mason-nvim-lint' },
+
   -- installs useful tools for go development
   {
     "olexsmir/gopher.nvim",

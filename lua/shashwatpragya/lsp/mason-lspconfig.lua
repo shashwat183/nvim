@@ -31,10 +31,6 @@ M.on_attach_with_codelens = function(_, bufnr)
   vim.api.nvim_exec_autocmds('User', { pattern = 'LspAttached' })
 end
 
--- function that does nothing so language/status will not print anywhere
-local function do_nothing()
-end
-
 local servers = {
   gopls = {
     gopls = {
@@ -143,6 +139,7 @@ local servers = {
     filetypes = { "html", "templ" },
   },
   templ = {},
+  cssls = {},
 }
 
 mason_lspconfig.setup {
@@ -161,7 +158,6 @@ mason_lspconfig.setup_handlers {
       "tsserver",
       "jsonls",
       "pyright",
-      -- "java_language_server"
     }
     local attach_func = M.on_attach_with_codelens
     for _, value in ipairs(non_codelens_server) do
@@ -177,22 +173,8 @@ mason_lspconfig.setup_handlers {
     }
   end,
 
-  ["jdtls"] = function()
-    -- require('lspconfig')["jdtls"].setup({
-    --   capabilities = capabilities,
-    --   on_attach = on_attach_with_codelens,
-    -- })
+  ["jdtls"] = function() -- skip setup as we use nvim-jdtls
   end
-  -- special setup for jdtls
-  -- ["jdtls"] = function()
-  --   require('lspconfig')["jdtls"].setup({
-  --     capabilities = capabilities,
-  --     on_attach = on_attach_with_codelens,
-  --     settings = servers["jdtls"].settings,
-  --     filetypes = (servers["jdtls"] or {}).filetypes,
-  --     handlers = (servers["jdtls"] or {}).handlers
-  --   })
-  -- end,
 }
 
 return M
