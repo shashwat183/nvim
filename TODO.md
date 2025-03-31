@@ -1,6 +1,7 @@
 # TODO
 
 - [] Decide between nvim-tree and neotree
+- [] Did first pass of avante.nvim, pretty useless. I would like the ability to chat to gemini and provide code from editor to it to ask questions.
 - [] Fix issue - rest.nvim http treesitter syntax highlighting
 - [] Maybe use move options in treesitter textobjects
 - [] Custom treesitter pickers for find_files with a specific suffix like *.go. The scenario here is when I want to do file search for only go files, go and go test files, jus infra files etc.
