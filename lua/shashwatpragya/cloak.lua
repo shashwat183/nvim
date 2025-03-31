@@ -1,8 +1,11 @@
 require('cloak').setup({
   patterns = {
     {
-      file_pattern = { '.env*', '*.properties' },
-      cloak_pattern = '=#B.+',
+      file_pattern = { '.env*', '*.properties', 'config' },
+      cloak_pattern = {
+        '=#B.+',
+        '"#D.+',
+      },
     },
   },
 })
