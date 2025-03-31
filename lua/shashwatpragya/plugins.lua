@@ -36,6 +36,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
+      'nvim-treesitter/nvim-treesitter-context',
     },
     build = ':TSUpdate',
   },
@@ -51,16 +52,28 @@ require('lazy').setup({
     'rest-nvim/rest.nvim',
     tag = '0.2',
     dependencies = {
-      'nvim-lua/plenary.nvim' }
+      'nvim-lua/plenary.nvim'
+    }
   },
-  -- nvim tree - a better filetree
+  -- grpc client I like using it for making grpc calls using grpcurl
+  {
+    "hudclark/grpc-nvim",
+    dependencies = {
+      'nvim-lua/plenary.nvim'
+    }
+  },
+  -- -- nvim tree - a better filetree
   { 'nvim-tree/nvim-tree.lua' },
   -- nice icons
   { 'nvim-tree/nvim-web-devicons' },
   -- smoooothhh scrolling
   { 'karb94/neoscroll.nvim' },
   -- preview markdown files using glow cmd
-  { 'ellisonleao/glow.nvim',               config = true,                                   cmd = 'Glow' },
+  {
+    'ellisonleao/glow.nvim',
+    config = true,
+    cmd = 'Glow'
+  },
   --  indentation guides with colored context etc
   { 'lukas-reineke/indent-blankline.nvim', tag = 'v2.20.8' },
   -- fancy todo highlights and commands
@@ -152,7 +165,30 @@ require('lazy').setup({
     },
   },
   { 'laytan/cloak.nvim' }, -- hide sensitive stuff
-  { 'ThePrimeagen/vim-be-good' }
+  { 'ThePrimeagen/vim-be-good' },
+  {
+    "nvzone/typr",
+    dependencies = "nvzone/volt",
+    opts = {},
+    cmd = { "Typr", "TyprStats" },
+  },
+  {
+    "hedyhli/outline.nvim",
+    lazy = true,
+    cmd = { "Outline", "OutlineOpen" },
+  },
+  {
+    "sphamba/smear-cursor.nvim",
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    },
+  },
 }, {
   install = {
     missing = false, -- don't just install a new plugin at startup

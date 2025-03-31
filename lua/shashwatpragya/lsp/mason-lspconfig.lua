@@ -100,7 +100,7 @@ local servers = {
   --   },
   -- },
   -- java_language_server = {},
-  tsserver = {},
+  ts_ls = {},
   lemminx = {
     redhat = {
       telemetry = { enabled = false }
@@ -140,6 +140,15 @@ local servers = {
   },
   templ = {},
   cssls = {},
+  graphql = {},
+  -- ruby_lsp = {
+  --   init_options = {
+  --     formatter = 'auto',
+  --   },
+  -- },
+  solargraph = {},
+  buf_ls = {},
+  terraformls = {},
 }
 
 mason_lspconfig.setup {
@@ -154,7 +163,7 @@ mason_lspconfig.setup_handlers {
   -- default handler
   function(server_name)
     local non_codelens_server = {
-      "tsserver",
+      "ts_ls",
       "jsonls",
       "pyright",
     }

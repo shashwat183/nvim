@@ -10,6 +10,7 @@ require('nvim-tree').setup({
     },
   },
   view = {
+    side = "right",
     width = 50,
   },
   actions = {
@@ -19,5 +20,10 @@ require('nvim-tree').setup({
   },
   update_focused_file = {
     enable = true,
+  },
+  git = {
+    enable = true,
+    ignore = false,
+    timeout = 500,
   },
 })

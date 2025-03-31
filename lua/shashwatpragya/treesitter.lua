@@ -6,7 +6,7 @@ require("nvim-treesitter.configs").setup({
     "groovy", "xml", "http",
     "css", "json", "javascript",
     "typescript", "bash", "http", "hcl",
-    "make"
+    "make", "graphql", "proto", "grpcnvim", "terraform"
   },
   highlight = {
     enable = true,

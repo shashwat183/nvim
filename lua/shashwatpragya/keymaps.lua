@@ -14,6 +14,7 @@ end
 
 -- jj for Escape
 vim.keymap.set("i", "jj", "<ESC>", options("jj for Escape"))
+
 -- <Space> for leader
 vim.keymap.set("", "<Space>", "<Nop>", options("leader"))
 vim.g.mapleader = " "
@@ -32,14 +33,22 @@ vim.keymap.set('n', '<leader>gS', require('gitsigns').stage_buffer, options("[G]
 vim.keymap.set('n', '<leader>gU', require('gitsigns').reset_buffer_index, options("[G]it unstage buffer"))
 vim.keymap.set('n', '<leader>gd', function() vim.cmd("Gvdiffsplit HEAD") end, options("[G]it unstage buffer"))
 vim.keymap.set('n', '<leader>gh', function() require('gitsigns').toggle_linehl() require('gitsigns').toggle_numhl() end, options("[G]it toggle line highlight"))
+vim.keymap.set('n', '<leader>gU', require('gitsigns').reset_buffer_index, options("[G]it unstage buffer"))
+
+-- format file(with formatter from conform)
+vim.keymap.set('n', '<leader>bf', function() require("conform").format() end, options("[Fo]rmat current buffer with LSP"))
 
 -- restclient keymaps
 vim.keymap.set('n', '<leader>rr', require('rest-nvim').run, options("[R]estclient run"))
+vim.keymap.set('n', '<leader>rg', function() vim.cmd("Grpc") end, options("[G]rpcclient run"))
 
 -- telescope keymaps
-vim.keymap.set('n', '<leader>f', function() require('telescope.builtin').find_files({ path_display={'absolute'}, layout='horizontal', hidden=true, no_ignore=true }) end, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>f', function() require('telescope.builtin').find_files({ path_display={'absolute'}, layout='horizontal', hidden=false, no_ignore=false }) end, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader><leader>', function() require('telescope.builtin').buffers({ path_display={'absolute'}, layout='horizontal', hidden=true, no_ignore=true }) end, { desc = '[S]earch [Buffers]' })
 vim.keymap.set('n', '<leader>F', function() require('telescope.builtin').live_grep(require('telescope.themes').get_ivy({})) end, { desc = '[S]earch by [G]rep' })
+
+-- outline keymaps
+vim.keymap.set('n', '<leader>o', function() require('outline').toggle() end, { desc = '[O]utline [O]pen' })
 
 -- harpoon keymaps
 vim.keymap.set('n', '<leader>hm', require('harpoon.mark').add_file, options("[H]arpoon mark current file"))
