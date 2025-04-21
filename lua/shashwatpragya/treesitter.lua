@@ -6,7 +6,8 @@ require("nvim-treesitter.configs").setup({
     "groovy", "xml", "http",
     "css", "json", "javascript",
     "typescript", "bash", "http", "hcl",
-    "make", "graphql", "proto", "grpcnvim", "terraform"
+    "make", "graphql", "proto", "grpcnvim",
+    "terraform", "dart"
   },
   highlight = {
     enable = true,
@@ -27,6 +28,7 @@ require("nvim-treesitter.configs").setup({
         ["il"] = { query = "@loop.inner", desc = "Select inside loop" },
         ["al"] = { query = "@loop.outer", desc = "Select aroud loop" },
       },
+      disable = {'dart'},
     },
     move = {
       enable = true,
@@ -44,7 +46,8 @@ require("nvim-treesitter.configs").setup({
         ["<leader>pa"] = "@parameter.outer",
         ["<leader>pq"] = "@conditional.outer",
         ["<leader>pl"] = "@loop.outer",
-      }
+      },
+      disable = {'dart'},
     },
   },
 })

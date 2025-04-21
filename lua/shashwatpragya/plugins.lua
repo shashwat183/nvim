@@ -111,6 +111,8 @@ require('lazy').setup({
   { 'tommcdo/vim-fubitive' },
   -- tokyonight colorscheme
   { 'folke/tokyonight.nvim' },
+  -- glowing colorscheme
+  { 'scottmckendry/cyberdream.nvim' },
 
 
   -- lsp related plugins

@@ -136,7 +136,7 @@ local servers = {
     },
   },
   html = {
-    filetypes = { "html", "templ" },
+    filetypes = { "html", "templ", "eruby" },
   },
   templ = {},
   cssls = {},
@@ -149,6 +149,8 @@ local servers = {
   solargraph = {},
   buf_ls = {},
   terraformls = {},
+  ruby_lsp = {},
+  tailwindcss = {},
 }
 
 mason_lspconfig.setup {
@@ -166,6 +168,9 @@ mason_lspconfig.setup_handlers {
       "ts_ls",
       "jsonls",
       "pyright",
+      "tailwindcss",
+      "cssls",
+      "html"
     }
     local attach_func = M.on_attach_with_codelens
     for _, value in ipairs(non_codelens_server) do
