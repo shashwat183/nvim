@@ -100,7 +100,11 @@ local servers = {
   --   },
   -- },
   -- java_language_server = {},
-  ts_ls = {},
+  ts_ls = {
+    single_file_support = false,
+    settings = {},
+  },
+  -- vtsls = {},
   lemminx = {
     redhat = {
       telemetry = { enabled = false }

@@ -35,6 +35,14 @@ vim.keymap.set('n', '<leader>gd', function() vim.cmd("Gvdiffsplit HEAD") end, op
 vim.keymap.set('n', '<leader>gh', function() require('gitsigns').toggle_linehl() require('gitsigns').toggle_numhl() end, options("[G]it toggle line highlight"))
 vim.keymap.set('n', '<leader>gU', require('gitsigns').reset_buffer_index, options("[G]it unstage buffer"))
 
+local function yankFilePath()
+  local filepath = vim.fn.expand('%')
+  vim.fn.setreg('+', filepath)
+end
+
+-- yank current filepath to +(system clipboard) register
+vim.keymap.set('n', '<leader>py', yankFilePath, options("[Y]ank current file's path to clipboard"))
+
 -- format file(with formatter from conform)
 vim.keymap.set('n', '<leader>bf', function() require("conform").format() end, options("[Fo]rmat current buffer with LSP"))
 
