@@ -1,2 +1,2 @@
 vim.opt.termguicolors = true
-vim.cmd.colorscheme 'cyberdream'
+vim.cmd.colorscheme 'carbonfox'
