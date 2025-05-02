@@ -16,6 +16,7 @@ M.lsp_keymaps = function(bufnr)
   nmap('gr', function() require("trouble").open('lsp_references') end, '[G]oto [R]eferences')
   nmap('gi', function() require("trouble").open('lsp_implementations') end, '[G]oto [I]mplementation')
   nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+  nmap('gt', vim.lsp.buf.type_definition, '[G]oto [T]ype definition')
   -- nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
   -- nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
 
